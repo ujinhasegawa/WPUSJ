@@ -29,3 +29,9 @@ Things you may want to cover:
 git config --global user.name "user name"
 git config --global user.email "email@com"
 ```
+
+### gemをインストールする
+`vendor/bundle/`にインストールされる
+```
+bundle install
+```
