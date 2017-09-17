@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# はじめにやること
+
+```
+git config --global user.name "user name"
+git config --global user.email "email@com"
+```
