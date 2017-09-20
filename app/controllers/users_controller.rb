@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'openssl'
 
 class UsersController < ApplicationController
 
@@ -14,6 +15,9 @@ class UsersController < ApplicationController
 	end
 
 	def create
+		params[:user][:password] = get_hash(params[:user][:password])
+		params[:user][:email] = get_hash(params[:user][:email])
+		binding.pry
 	  @user = User.new(user_params)
 	  @user.save
 	  redirect_to controller: 'users', action: 'index'
@@ -23,5 +27,11 @@ class UsersController < ApplicationController
 
 	def user_params
 	  params.require(:user).permit(:name, :email, :password)
+	end
+
+	def get_hash(char)
+		digest = OpenSSL::Digest.new('sha384')
+		digest.update(char)
+		digest.hexdigest()
 	end
 end
