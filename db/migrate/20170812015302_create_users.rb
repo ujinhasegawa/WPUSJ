@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.integer  :rank_year
       t.string   :email
       t.string   :password
+      t.string   :authenticity_token
       t.datetime :last_login
 
       t.timestamps

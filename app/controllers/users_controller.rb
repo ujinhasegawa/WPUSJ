@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	def create
 		params[:user][:password] = get_hash(params[:user][:password])
 		params[:user][:email] = get_hash(params[:user][:email])
-		binding.pry
+		params[:user][:authenticity_token] = params[:authenticity_token]
 	  @user = User.new(user_params)
 	  @user.save
 	  redirect_to controller: 'users', action: 'index'
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-	  params.require(:user).permit(:name, :email, :password)
+	  params.require(:user).permit(:name, :email, :password, :authenticity_token)
 	end
 
 	def get_hash(char)

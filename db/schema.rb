@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170919164157) do
     t.integer "rank_year"
     t.string "email"
     t.string "password"
+    t.string "authenticity_token"
     t.datetime "last_login"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
