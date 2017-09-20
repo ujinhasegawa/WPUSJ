@@ -7,6 +7,21 @@ class UsersController < ApplicationController
 	  @user = User.new
 	end
 
+	def login
+	end
+
+	def confirm_auth
+		user = User.find_by_email(get_hash(params[:email]))
+
+		alert_message = 'メールアドレスかパスワードが間違っています。'
+		redirect_to :user_login, alert: alert_message and return if user.nil?
+		redirect_to :user_login, alert: alert_message and return if user.password != get_hash(params[:password])
+
+		user.update_attributes(authenticity_token: params[:authenticity_token])
+
+		redirect_to action: 'index'
+	end
+
 	def show
 	end
 
@@ -20,7 +35,7 @@ class UsersController < ApplicationController
 		params[:user][:authenticity_token] = params[:authenticity_token]
 	  @user = User.new(user_params)
 	  @user.save
-	  redirect_to controller: 'users', action: 'index'
+	  redirect_to action: 'index'
 	end
 
 	private
