@@ -1,0 +1,2 @@
+class ActivityMaster < ApplicationRecord
+end
