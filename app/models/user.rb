@@ -7,5 +7,6 @@ class User < ApplicationRecord
   attr_accessor :name
 
   has_one :information
+  has_many :activity
   accepts_nested_attributes_for :information
 end

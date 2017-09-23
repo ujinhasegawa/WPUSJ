@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170923131542) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "title"
     t.text "memo"
     t.integer "group"
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170923131542) do
     t.datetime "achieve_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "activity_masters", force: :cascade do |t|
@@ -66,5 +68,6 @@ ActiveRecord::Schema.define(version: 20170923131542) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "information", "users"
 end
