@@ -1,8 +1,13 @@
-%h1 ユーザ作成
+%h1 サインアップ
 
 = form_for @user do |f|
-  名前
-  = f.label :name, '名前'
+  = f.label :name, 'ユーザ名'
   = f.text_field :name
-
-  = f.submit '確定'
+  %br
+  = f.label :name, 'メールアドレス'
+  = f.text_field :email
+  %br
+  = f.label :password, 'パスワード'
+  = f.text_field :password
+  %br
+  = f.submit 'サインアップ'

@@ -1,0 +1,15 @@
+%h1 ログイン
+
+- if flash[:alert].present?
+  = flash[:alert]
+
+%br
+
+= form_tag 'confirm_auth', method: 'put' do
+  = label_tag      :email, 'メールアドレス'
+  = text_field_tag :email
+  %br
+  = label_tag      :password, 'パスワード'
+  = text_field_tag :password
+  %br
+  = submit_tag 'ログイン'
