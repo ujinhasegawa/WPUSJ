@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    @user = current_user
+    @info = @user.information
 		# myユーザの簡単な情報
 		# タイムライン
 		# リンク

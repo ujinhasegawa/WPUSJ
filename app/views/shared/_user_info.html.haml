@@ -1,0 +1,15 @@
+%h2 リンク
+活動記録 ユーザ一覧 グループ 
+%h2 ユーザ情報 
+ユーザ情報設定
+%br
+%strong= @info.name
+%br
+= "地域: #{@info.country} #{@info.area}"
+%br
+= "ポイント: 今月 #{@info.point_month}Pt 今年 #{@info.point_year}Pt 生涯 #{@info.point_lifetime}Pt"
+%br
+= "ランキング: 今月 #{}位 今年 #{}位"
+%br
+グループ
+%h2 タイムライン

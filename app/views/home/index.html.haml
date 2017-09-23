@@ -1,13 +1,15 @@
-%h1 Home#index
+%h1 My Page
 - if user_signed_in?
-  Logged in as
+  ログインユーザ
   = succeed "." do
-    %strong= current_user.email
-  = link_to "Settings", edit_user_registration_path, :class => "navbar-link"
+    %strong= current_user.information.name
+  = link_to "ユーザ設定", edit_user_registration_path, :class => "navbar-link"
   |
-  \#{link_to "Logout", destroy_user_session_path, method: :delete, :class => "navbar-link"}
+  \#{link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "navbar-link"}
 - else
-  = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+  = link_to "ユーザ登録", new_user_registration_path, :class => 'navbar-link'
   |
-  \#{link_to "Login", new_user_session_path, :class => 'navbar-link'}
-%p Find me in app/views/home/index.html.erb
+  \#{link_to "ログイン", new_user_session_path, :class => 'navbar-link'}
+
+- if user_signed_in?
+  = render 'shared/user_info'
