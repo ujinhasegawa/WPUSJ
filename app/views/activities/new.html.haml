@@ -5,7 +5,7 @@
   .field
     = f.label :title, '件名'
     %br
-    = f.text_field :title
+    = f.text_field :title, disabled: @disabled
 
   .field
     = f.label :memo, 'メモ'
@@ -15,7 +15,10 @@
   .field
     = f.label :achieve_at, '達成日'
     %br
-    = f.text_field :achieve_at
+    = f.text_field :achieve_at, value: Date.today.strftime("%Y/%m/%d")
+
+  .field
+    = f.hidden_field :id
   
   .actions
     = f.submit '登録'
@@ -25,4 +28,4 @@
   - @activity_master.each do |act|
 
     .activities
-      = "#{act.title}: #{act.detail} #{act.point}Pt"
+      = link_to "#{act.title}: #{act.detail} #{act.point}Pt", new_activity_path(activity: act.id)
