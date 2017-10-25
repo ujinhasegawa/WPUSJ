@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activity = current_user.activity.order('achieve_at desc')
+    @activity = current_user.activity.order('achieved_at desc')
   end
 
   def new
@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    params[:activity][:achieve_at] = params[:activity][:achieve_at].to_datetime
+    params[:activity][:achieved_at] = params[:activity][:achieved_at].to_datetime
     id = params[:activity][:id]
 
     if not id.empty?
@@ -37,6 +37,6 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:title, :memo, :point, :group, :achieve_at)
+    params.require(:activity).permit(:title, :memo, :point, :group, :achieved_at)
   end
 end

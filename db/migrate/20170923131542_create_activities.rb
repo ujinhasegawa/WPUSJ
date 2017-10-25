@@ -6,7 +6,7 @@ class CreateActivities < ActiveRecord::Migration[5.1]
       t.text       :memo
       t.integer    :group
       t.integer    :point
-      t.datetime   :achieve_at
+      t.datetime   :achieved_at
 
       t.timestamps
     end

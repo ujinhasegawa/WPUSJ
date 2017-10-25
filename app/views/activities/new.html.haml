@@ -16,9 +16,9 @@
     = f.text_area :memo
 
   .field
-    = f.label :achieve_at, '達成日'
+    = f.label :achieved_at, '達成日'
     %br
-    = f.text_field :achieve_at, value: Date.today.strftime("%Y/%m/%d")
+    = f.text_field :achieved_at, value: Date.today.strftime("%Y/%m/%d")
 
   .field
     = f.hidden_field :id
