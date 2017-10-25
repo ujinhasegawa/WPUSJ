@@ -1,5 +1,9 @@
 class ActivitiesController < ApplicationController
 
+  def index
+    @activity = current_user.activity.order('achieve_at desc')
+  end
+
   def new
     if params[:activity].nil?
       @activity = Activity.new
