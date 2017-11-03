@@ -1,5 +1,27 @@
-%h2 私の情報編集
+%h2 登録情報の編集
 
+%h3 登録情報
+
+= form_for @info do |f|
+
+  .field
+    = f.label :name, "名前"
+    = f.text_field :name
+
+  .field
+    = f.label :country, "国"
+    = f.text_field :country
+
+  .field
+    = f.label :area, "地域"
+    = f.text_field :area
+
+  .actions
+  = f.submit "更新"
+
+%br
+
+%h3 ログイン情報
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
 
@@ -30,7 +52,7 @@
 
   .field
     = f.label :current_password, '現在のパスワード'
-    %i (パスワード変更をする場合は現在のパスワード入力は必須です。)
+    %i (ログイン情報を変更をする場合は現在のパスワード入力は必須です。)
     %br/
     = f.password_field :current_password, autocomplete: "off"
 
@@ -41,4 +63,4 @@
 %p
   非常に残念ですが、退会されるのですか? #{button_to "退会します！！", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
 
-= link_to '戻る', :back
+= link_to '戻る', :root

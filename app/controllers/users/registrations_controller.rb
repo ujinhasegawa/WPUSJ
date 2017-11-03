@@ -29,14 +29,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @info = current_user.information
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @info = current_user.information
+    super
+  end
 
   # DELETE /resource
   # def destroy

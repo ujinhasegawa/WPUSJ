@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  get  'home/index'
 
   # devise_for :users
   devise_for :users, :controllers => {
@@ -9,5 +8,6 @@ Rails.application.routes.draw do
   }
 
   resources :users, only:[ :index, :show ]
+  resources :information, only:[ :update ]
   resources :activities
 end
