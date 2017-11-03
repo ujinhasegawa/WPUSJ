@@ -39,7 +39,7 @@ class ActivitiesController < ApplicationController
       current_user.information.save
     end
 
-    redirect_to :new_activity
+    redirect_to :new_activity, notice: "活動「#{@activity.title}」を登録しました。"
   end
 
   private
