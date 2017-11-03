@@ -10,6 +10,9 @@
     %br
     = f.text_field :title, disabled: @disabled
 
+    - if @disabled
+      = f.hidden_field :title
+
   .field
     = f.label :memo, 'メモ'
     %br
