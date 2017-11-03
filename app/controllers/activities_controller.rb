@@ -1,7 +1,11 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activity = current_user.activity.order('achieved_at desc')
+    activity  = current_user.activity
+    @activity = activity.order('achieved_at desc')
+    @summary  = activity.group(:title).count
+
+    @summary_each_year  = current_user.summarize_activities_each_year
   end
 
   def new

@@ -1,0 +1,14 @@
+%h2 活動のまとめ
+- @summary.each do |key, value|
+  %div
+    = "「#{key}」: #{value} "
+    %br
+
+%h2 活動履歴
+- @summary_each_year.each do |key, values|
+  %span
+    %strong= key
+    %br
+    - values.each do |value|
+      = " 「#{value[0]}」: #{value[1]}"
+      %br

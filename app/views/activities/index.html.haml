@@ -3,12 +3,4 @@
 = link_to 'ホーム',   :root
 = link_to '活動登録', :new_activity
 
-%h2 活動履歴
-
-- @activity.each do |act|
-  %span
-    %b 
-      = act.title
-    %br
-    = act.memo
-    %br
+= render 'shared/user_activity'
