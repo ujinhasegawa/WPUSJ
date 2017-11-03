@@ -31,6 +31,14 @@ class ActivitiesController < ApplicationController
 
     @activity = current_user.activity.new(activity_params)
     @activity.save
+
+    if not @activity.point.nil?
+      current_user.information.point_month    += @activity.point
+      current_user.information.point_year     += @activity.point
+      current_user.information.point_lifetime += @activity.point
+      current_user.information.save
+    end
+
     redirect_to :new_activity
   end
 
