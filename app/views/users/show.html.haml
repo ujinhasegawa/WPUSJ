@@ -1,0 +1,19 @@
+- info = @user.information
+- activities = @user.activity
+
+%h1= info.name
+
+= "地域: #{info.country} #{info.area}"
+%br
+= "ポイント: 今月 #{info.point_month}Pt 今年 #{info.point_year}Pt 生涯 #{info.point_lifetime}Pt"
+%br
+= "ランキング: 今月 #{}位 今年 #{}位"
+%br
+
+%h2 タイムライン
+
+%h2 履歴
+
+- activities.each do |act|
+  = act.title
+  %br
