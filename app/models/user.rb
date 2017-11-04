@@ -8,6 +8,14 @@ class User < ApplicationRecord
   has_many :activity
   accepts_nested_attributes_for :information
 
+  def name
+    self.information.name
+  end
+
+  def info
+    self.information
+  end
+
   def summarize_activities_each_year
     activity = self.activity
     summary = activity.group("date_part('year', timezone('Asia/Tokyo', achieved_at))").group(:title).count
