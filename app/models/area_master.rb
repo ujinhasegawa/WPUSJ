@@ -1,0 +1,2 @@
+class AreaMaster < ApplicationRecord
+end
