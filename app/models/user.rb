@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   def summarize_activities_each_year
     activity = self.activity
+    return {} if activity.empty?
+
     summary = activity.group("date_part('year', timezone('Asia/Tokyo', achieved_at))").group(:title).count
     # このような結果が得られる {[2017.0, "aaa"]=>1, [2017.0, "bbb"]=>2, [2016.0, "ccc"]=>2, [2015.0, "ddd"]=>3}
 
