@@ -1,3 +1,6 @@
+= simple_format(@info.comment, {}, wrapper_tag: "div")
+好きなみ言:
+= simple_format(@info.preferred_message, {}, wrapper_tag: "div")
 = "地域: #{@info.country} #{@info.area}"
 %br
 = "ポイント: 今月 #{@info.point_month}Pt 今年 #{@info.point_year}Pt 生涯 #{@info.point_lifetime}Pt"

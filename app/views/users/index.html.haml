@@ -8,5 +8,6 @@
     - @info = user.information
     %div
       %strong= link_to @info.name, user_path(user)
+      = ' ' + @info.status
       %br
       = render 'shared/user_info'
