@@ -37,10 +37,26 @@ class ActivitiesController < ApplicationController
     @activity.save
 
     if not @activity.point.nil?
-      current_user.information.point_month    += @activity.point
-      current_user.information.point_year     += @activity.point
-      current_user.information.point_lifetime += @activity.point
-      current_user.information.save
+      user_info = current_user.information
+      user_info.point_month    += @activity.point
+      user_info.point_year     += @activity.point
+      user_info.point_lifetime += @activity.point
+
+      groups = Activity.groups.keys
+      case @activity.group
+      when groups[0]
+        user_info.point_bible            += @activity.point
+      when groups[1]
+        user_info.point_divine_principle += @activity.point
+      when groups[2]
+        user_info.point_father_message   += @activity.point
+      when groups[3]
+        user_info.point_faith            += @activity.point
+      when groups[4]
+        user_info.point_practice         += @activity.point
+      end
+
+      user_info.save
     end
 
     redirect_to :new_activity, notice: "活動「#{@activity.title}」を登録しました。"
