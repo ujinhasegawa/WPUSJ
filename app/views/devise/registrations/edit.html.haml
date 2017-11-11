@@ -10,11 +10,11 @@
 
   .field
     = f.label :country, "国"
-    = f.text_field :country
+    = f.collection_select :country_master_id, @countries, :id, :name, selected: @country_defo_id
 
   .field
     = f.label :area, "地域"
-    = f.text_field :area
+    = f.collection_select :area_master_id, @areas, :id, :name, selected: @area_defo_id
 
   .actions
   = f.submit "更新"

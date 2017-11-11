@@ -32,7 +32,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    @info = current_user.information
+    @info      = current_user.information
+    @countries = CountryMaster.all
+
+    if not @info.country_master_id.nil?
+      @areas           = CountryMaster.find(@info.country_master_id).areas
+      @country_defo_id = @info.country_master_id
+      @area_defo_id    = @info.area_master_id
+    else
+      # もし、地域が未設定の場合は初期値を日本にしておく
+      @areas           = CountryMaster.find_by_name('日本').areas
+      @country_defo_id = CountryMaster.find_by_name('日本').id
+      @area_defo_id    = CountryMaster.find_by_name('日本').areas.first.id
+    end
+
     super
   end
 
