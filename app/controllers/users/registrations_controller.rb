@@ -16,9 +16,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user = current_user
 
     ActiveRecord::Base.transaction do
-      user.build_information(params.require(:user).permit(:name))
+      user.build_information(params.require(:user_name).permit(:name))
       user.save!
-      user.information.update!(point_month: 0, point_year: 0, point_lifetime: 0)
+      user.information.update!(point_month: 0, point_year: 0, point_lifetime: 0,
+                               point_bible: 0, point_divine_principle: 0, point_father_message: 0,
+                               point_faith: 0, point_practice: 0)
     end
 
   rescue => e
