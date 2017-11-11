@@ -9,6 +9,7 @@ class InformationController < ApplicationController
   private
 
   def information_params
-    params.require(:information).permit(:name, :country_master_id, :area_master_id)
+    params.require(:information).permit(:name, :status, :comment, :preferred_message,
+                                        :country_master_id, :area_master_id)
   end
 end

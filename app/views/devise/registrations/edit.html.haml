@@ -9,6 +9,20 @@
     = f.text_field :name
 
   .field
+    = f.label :status, "現在の調子"
+    = f.text_field :status
+
+  .field
+    = f.label :comment, "コメント"
+    %br
+    = f.text_area :comment
+
+  .field
+    = f.label :preferred_message, "好きなみ言"
+    %br
+    = f.text_area :preferred_message
+
+  .field
     = f.label :country, "国"
     = f.collection_select :country_master_id, @countries, :id, :name, selected: @country_defo_id
 
