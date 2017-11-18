@@ -19,8 +19,8 @@
   グループ
 
   %h2 ユーザ情報
-  %strong= @info.name
-  = ' ' + @info.status
+  %strong= display_char(@info.name)
+  = ' ' + display_char(@info.status)
   %br
 
   = render 'shared/user_info'

@@ -7,7 +7,7 @@
   - @users.each do |user|
     - @info = user.information
     %div
-      %strong= link_to @info.name, user_path(user)
-      = ' ' + @info.status
+      %strong= link_to display_char(@info.name), user_path(user)
+      = ' ' + display_char(@info.status)
       %br
       = render 'shared/user_info'

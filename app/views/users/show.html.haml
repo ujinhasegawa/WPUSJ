@@ -2,8 +2,8 @@
 
 = link_to '戻る', :users
 
-%h1= @info.name
-= ' ' + @info.status
+%h1= display_char(@info.name)
+= ' ' + display_char(@info.status)
 
 = render 'shared/user_info'
 
