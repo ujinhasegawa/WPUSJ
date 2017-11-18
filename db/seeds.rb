@@ -9,5 +9,15 @@
 require "csv"
 
 CSV.foreach('db/activity_master.csv') do |row|
-  ActivityMaster.create(title: row[0], detail: row[1], group: row[2], point: row[3])
+  ActivityMaster.create(title: row[0], detail: row[1], group: row[2].to_i, point: row[3])
+end
+
+CSV.foreach('db/country_master.csv') do |row|
+  CountryMaster.create(name: row[0])
+end
+
+CSV.foreach('db/area_master.csv') do |row|
+  country = CountryMaster.find_by_name(row[0])
+  country.area_master.build(name: row[1])
+  country.save
 end

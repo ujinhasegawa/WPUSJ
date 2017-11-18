@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170923123246) do
+ActiveRecord::Schema.define(version: 20171111092502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.text "memo"
+    t.integer "group"
+    t.integer "point"
+    t.datetime "achieved_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
 
   create_table "activity_masters", force: :cascade do |t|
     t.string "title"
@@ -24,14 +36,36 @@ ActiveRecord::Schema.define(version: 20170923123246) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "area_masters", force: :cascade do |t|
+    t.bigint "country_master_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_master_id"], name: "index_area_masters_on_country_master_id"
+  end
+
+  create_table "country_masters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "information", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
-    t.string "country"
-    t.string "area"
+    t.string "status"
+    t.text "comment"
+    t.text "preferred_message"
+    t.integer "country_master_id"
+    t.integer "area_master_id"
     t.integer "point_month"
     t.integer "point_year"
     t.integer "point_lifetime"
+    t.integer "point_bible"
+    t.integer "point_divine_principle"
+    t.integer "point_father_message"
+    t.integer "point_faith"
+    t.integer "point_practice"
     t.integer "rank_month"
     t.integer "rank_year"
     t.datetime "created_at", null: false
@@ -56,5 +90,7 @@ ActiveRecord::Schema.define(version: 20170923123246) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "users"
+  add_foreign_key "area_masters", "country_masters"
   add_foreign_key "information", "users"
 end

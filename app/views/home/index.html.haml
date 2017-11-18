@@ -12,4 +12,17 @@
   \#{link_to "ログイン", new_user_session_path, :class => 'navbar-link'}
 
 - if user_signed_in?
+  %h2 リンク
+  = link_to '活動登録', :new_activity
+  = link_to '活動記録', :activities
+  = link_to '友達一覧', :users
+  グループ
+
+  %h2 ユーザ情報
+  %strong= display_char(@info.name)
+  = ' ' + display_char(@info.status)
+  %br
+
   = render 'shared/user_info'
+
+  = render 'shared/user_timeline'

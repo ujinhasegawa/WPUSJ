@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+
+  root 'home#index'
+
   # devise_for :users
   devise_for :users, :controllers => {
     :registrations => "users/registrations"
   }
-  get 'home/index'
-  root 'home#index'
+
+  resources :users, only:[ :index, :show ]
+  resources :information, only:[ :update ]
+  resources :activities
 end

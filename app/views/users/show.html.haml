@@ -1,0 +1,12 @@
+- @info = @user.information
+
+= link_to '戻る', :users
+
+%h1= display_char(@info.name)
+= ' ' + display_char(@info.status)
+
+= render 'shared/user_info'
+
+= render 'shared/user_timeline'
+
+= render 'shared/user_activity'

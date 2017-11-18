@@ -6,12 +6,12 @@
   .field
     = f.label :name, 'ユーザ名'
     %br/
-    = f.text_field :name, autofocus: true
+    = text_field :user_name, :name, autofocus: true
 
   .field
     = f.label :email, 'メールアドレス'
     %br/
-    = f.email_field :email, autofocus: true
+    = f.email_field :email
 
   .field
     = f.label :password, 'パスワード'
