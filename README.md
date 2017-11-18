@@ -31,7 +31,7 @@ git config --global user.email "email@com"
 ```
 
 ### gemをインストールする
-`vendor/bundle/`にインストールされる
+`/home/vagrant/sns_prj_gems/`にインストールされる(`.bundle/config`に記載)
 ```
 bundle install
 ```
