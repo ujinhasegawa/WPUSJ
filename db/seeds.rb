@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "csv"
+
+CSV.foreach('db/activity_master.csv') do |row|
+  ActivityMaster.create(title: row[0], detail: row[1], group: row[2], point: row[3])
+end

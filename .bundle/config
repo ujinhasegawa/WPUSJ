@@ -1,4 +1,4 @@
 ---
-BUNDLE_PATH: "vendor/bundle"
+BUNDLE_PATH: "/home/vagrant/sns_prj_gems"
 BUNDLE_JOBS: "4"
 BUNDLE_DISABLE_SHARED_GEMS: "true"

@@ -5,13 +5,14 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+## Version
+```
+ruby 2.4.1p111
+Rails 5.1.3
+psql (PostgreSQL) 9.6.5
+```
 
 * System dependencies
-
-* Configuration
-
-* Database creation
 
 * Database initialization
 
@@ -23,8 +24,9 @@ Things you may want to cover:
 
 * ...
 
-# はじめにやること
-
+## Configuration
+### gitの設定
+ユーザ名とメールを設定する
 ```
 git config --global user.name "user name"
 git config --global user.email "email@com"
@@ -34,4 +36,15 @@ git config --global user.email "email@com"
 `/home/vagrant/sns_prj_gems/`にインストールされる(`.bundle/config`に記載)
 ```
 bundle install
+```
+
+### DB作成
+```
+bundle exec rake db:create
+bundle exec rake db:migrate
+```
+
+### RAILSサーバ起動
+```
+bundle exec rails s -b 0.0.0.0
 ```
